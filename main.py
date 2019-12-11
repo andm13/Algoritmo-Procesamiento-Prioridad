@@ -17,8 +17,9 @@ for x in range(num_procesos):
     inicio = input()
     print "Cual es el tiempo de procesamiento del proceso "+str((x+1))
     proceso = input()
-    print "Cual es la prioridad del proceso "+str((x+1))+"\n"
+    print "Cual es la prioridad del proceso "+str((x+1))
     prioridad = input()
+    print ""
     procesos.append(Proceso(inicio, proceso, prioridad))
     pass
 #imprimir los datos
@@ -36,20 +37,26 @@ for x in range(num_procesos):
 #inicio de algoritmo
 for x in range(total):
     print x
-    for y in range(num_procesos)
+    for y in range(num_procesos):
         if procesos[y] in cola:
 
-        else
-            procesos[y].estado.append(0)
             pass
+        else:
+            procesos[y].estado.append(0)
         pass
     for y in range(num_procesos):
         if procesos[y].t_inicio==x:
             cola.append(procesos[y])
-            t.append("/")
+            procesos[y].estado.append(0)
+            if(len(cola)!=1):
+                for z in range(len(cola)-1):
+                    if(cola[z].prioridad>cola[z+1].prioridad):
+                        aux = cola[z]
+                        cola[z]=cola[z+1]
+                        colaz[z+1]=aux
+                        pass
+                pass
             pass
         pass
-        for z in range(len(cola)):
 
-            pass
     pass
