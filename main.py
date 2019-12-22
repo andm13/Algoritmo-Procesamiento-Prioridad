@@ -54,9 +54,17 @@ for x in range(total):
         if procesos[y] not in cola:
             procesos[y].estado.append(0)
             pass
-        else:
-
-        pass
+        elif procesos[y]==cola[0]:
+            procesos[y].estado.append(1)
+            cola[0].t_proceso-=1
+            if cola[0].t_proceso==0:
+                cola.pop(0)
+                procesos[y].t_finaliza=x+1
+                pass
+            pass
+        elif (procesos[y] in cola) and (procesos[y] != cola[0]):
+            procesos[y].estado.append(2)
+            pass
     pass
 """
 for x in range(total):
