@@ -1,10 +1,15 @@
+
 class Proceso:
     def __init__(self, inicio, proceso, prioridad):
         self.t_inicio=inicio
         self.t_finaliza=999
         self.t_proceso=proceso
+        self.tproceso=proceso
         self.prioridad=prioridad
         self.estado=[]
+        self.T=999
+        self.W=999
+        self.P=999
         pass
     pass
 print "Cuantos procesos son:"
@@ -78,7 +83,7 @@ for x in range(total+1):
 for x in range(num_procesos):
     print "Proceso "+str(x+1)
     print "Tiempo t_finaliza: "+str(procesos[x].t_finaliza)
-    print "Tiempo procesamiento: "+str(procesos[x].t_proceso)
+    print "Tiempo procesamiento: "+str(procesos[x].tproceso)
     print "Prioridad: "+str(procesos[x].prioridad)
     print procesos[x].estado
     pass
@@ -89,3 +94,23 @@ for x in range(num_procesos):
 for x in range(num_procesos):
     print procesos[x].estado
     pass
+
+print ""
+#imprime tabla
+t=0
+w=0
+p=0
+print "Proceso\tT_llegada\tt\tT_finaliza\tT\tW\tP"
+for x in range(num_procesos):
+    procesos[x].T=procesos[x].t_finaliza-procesos[x].t_inicio
+    procesos[x].W=procesos[x].T-procesos[x].tproceso
+    procesos[x].P=float(procesos[x].T)/float(procesos[x].tproceso)
+    print str(x+1)+"\t   "+str(procesos[x].t_inicio)+"\t\t"+str(procesos[x].tproceso)+"\t   "+str(procesos[x].t_finaliza)+"\t\t"+str(procesos[x].T)+"\t"+str(procesos[x].W)+"\t"+str(procesos[x].P)
+    t+=procesos[x].T
+    w+=procesos[x].W
+    p+=procesos[x].P
+    pass
+
+print "Promedio de T "+ str(float(t)/float(num_procesos))
+print "Promedio de W "+str(float(w)/float(num_procesos))
+print "Promedio de P "+str(float(p)/float(num_procesos))
